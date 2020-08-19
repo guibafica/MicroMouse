@@ -4,16 +4,45 @@ function log(text) {
 	console.error(text);
 }
 
+function way(direction) {
+	log(direction);
+
+	if (direction > 4) {
+		direction = 1;
+	}
+
+	if (direction === 1) {
+		log("Subindo");
+	}
+
+	if (direction === 2) {
+		log("Avançando");
+	}
+
+	if (direction === 3) {
+		log("Descendo");
+	}
+
+	if (direction === 4) {
+		log("Recuando");
+	}
+}
+
 function main() {
 	let steps = 0;
 	let x = 0;
 	let y = 0;
-	let sentidoX = 2;
-	let sentidoY = 2;
-	// Sentidos (%2) => AVANÇANDO E CIMA
-	// Sentidos (!%2) => RECUANDO E BAIXO
 
-  // Seleção de método:
+	// Valor que indica para que lado o robô esta indo, desta forma podemos 
+	// calcular sua posição atual.
+	let direction = 1;
+	// direction (1) => Subindo
+	// direction (2) => Avançando
+	// direction (3) => Descendo
+	// direction (4) => Recuando
+	
+
+	// Seleção de método:
 	let method = 1;
 	// Method ( 1 ) => Método da mão DIREITA ('')
 	// Method ( 2 ) => Método da mão ESQUERDA ('')
@@ -28,14 +57,7 @@ function main() {
 
 		while (true) {
 			while (!IA.wallRight()) {
-				log("Buscando parede na direita.");	
-
-				if (sentidoX%2 == 0 && sentidoY%2 == 0) {
-					x++;
-					log("AVANÇANDO");
-					log("Posição: (" + x + "," + y + ")");
-					log("");
-				}
+				log("Buscando parede na direita.");
 
 				IA.turnRight();
 				IA.moveForward();
@@ -63,14 +85,9 @@ function main() {
 			if (IA.wallRight() && !IA.wallFront()) {
 				log("Mão na parede,");
 
-				if (sentidoY%2 == 0) {
-					y++;
-					log("SUBINDO");
-					log("Posição: (" + x + "," + y + ")");
-					log("");
-				}
-
 				IA.moveForward();
+
+				way(direction);
 			}
 
 			steps++;
@@ -135,3 +152,7 @@ function main() {
 }
 
 main();
+
+
+// log("Posição: (" + x + "," + y + ")");
+// log("");
