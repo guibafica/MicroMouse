@@ -129,15 +129,17 @@ function main() {
 	}
 
 	if (method === 2) {
-		log("");
 		log("Iniciando método da mão ESQUERDA...");
+		log("");
+		log("");
 		IA.setColor(0, 0, 'g');
 		IA.setText(0, 0, "Start");
 
 		while (true) {
 			while (!IA.wallLeft()) {
 				log("");
-				log("Buscando parede na esquerda");
+				log("Buscando parede na esquerda.");
+
 				IA.turnLeft();
 				IA.moveForward();
 
@@ -146,7 +148,7 @@ function main() {
 
 				if (!IA.wallFront() && IA.wallLeft()) {
 					log("");
-					log("Frente limpa, seguindo");
+					log("Frente limpa, seguindo.");
 
 					IA.moveForward();
 					Direction(direction);
@@ -155,7 +157,7 @@ function main() {
 
 			while (IA.wallLeft() && IA.wallFront() && IA.wallRight()) {
 				log("");
-				log("Beco sem saida, Voltando");
+				log("Beco sem saida, voltando.");
 
 				IA.turnRight();
 				IA.turnRight();
@@ -167,7 +169,7 @@ function main() {
 
 			while (IA.wallLeft() && IA.wallFront() && !IA.wallRight()) {
 				log("");
-				log("Direita livre, girando e seguindo");
+				log("Direita livre, girando e seguindo.");
 
 				IA.turnRight();
 				IA.moveForward();
@@ -178,10 +180,9 @@ function main() {
 
 			if (IA.wallLeft() && !IA.wallFront()) {
 				log("");
-				log("Mão na parede, Seguindo");
+				log("Mão na parede,");
 
 				IA.moveForward();
-
 				Direction(direction);
 			}
 
