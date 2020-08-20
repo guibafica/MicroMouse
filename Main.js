@@ -22,14 +22,19 @@ function main() {
 	// Direction ( 4 ) => ESQUERDA
 
 	function Direction() {
-		if (direction > 4) {
+		if (direction === 5) {
 			direction = 1;
-			// y--;
 		}
-		if (direction < 1) {
+		if (direction === 6) {
+			direction = 2;
+		}
+		if (direction === -1) {
+			direction = 3;
+		}
+		if (direction === 0) {
 			direction = 4;
 		}
-
+	
 		if (direction === 1) {
 			log("SUBINDO");
 			y++;
@@ -96,7 +101,7 @@ function main() {
 				IA.turnLeft();
 				IA.moveForward();
 
-				direction = direction - 2;
+				direction = direction + 2;
 				Direction(direction);
 			}
 
@@ -156,7 +161,7 @@ function main() {
 				IA.turnRight();
 				IA.moveForward();
 
-				direction = direction + 2;
+				direction = direction - 2;
 				Direction(direction);
 			}
 
